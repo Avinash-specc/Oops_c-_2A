@@ -5,33 +5,33 @@ using namespace std;
 class Student {
 private:
     string name;
-    int age;
+    int marks;
 
 public:
 
     Student() {
         name = "Unknown";
-        age = 0;
+        marks = 0;
         cout << "Default constructor called." << endl;
     }
 
     Student(string n, int a) {
         name = n;
-        age = a;
+        marks = a;
         cout << "Parameterized constructor called for "
-             << name << "." << endl;
+        << name << "." << endl;
     }
 
     Student(const Student& obj) {
         name = obj.name;
-        age = obj.age;
+        marks = obj.marks;
         cout << "Copy constructor called for "
              << name << "." << endl;
     }
 
     void display() const {
         cout << "Name: " << name
-             << ", Age: " << age << endl;
+             << ", Marks: " << marks << endl;
     }
 
     ~Student() {
@@ -41,25 +41,16 @@ public:
 };
 
 int main() {
-    cout << "--- Object 1 ---" << endl;
+
     Student s1;                
     s1.display();
 
-    cout << "\n--- Object 2 ---" << endl;
-    Student s2("Alice", 20);  
+    Student s2("Avinash", 20);  
     s2.display();
 
-    cout << "\n--- Object 3 ---" << endl;
     Student s3(s2);        
     s3.display();
+    cout<<endl;
 
-    cout << "\n--- Local Scope ---" << endl;
-    {
-        Student s4("Bob", 22);
-        s4.display();
-        cout << "Leaving local scope..." << endl;
-    } 
-
-    cout << "\nEnd of main()" << endl;
     return 0;
-}
+};
