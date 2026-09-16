@@ -34,8 +34,8 @@ int main() {
     Patient::showActivePatients();
 
     {
-        Patient p2(102, "Rahul");
-        Patient p3(103, "Aman");
+        Patient p2(102, "Archit");
+        Patient p3(103, "Shivam");
 
         Patient::showActivePatients();
     } 

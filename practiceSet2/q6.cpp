@@ -19,7 +19,7 @@ public:
         marks1 = m1;
         marks2 = m2;
         marks3 = m3;
-        
+
         totalStudents++;
     }
 
@@ -60,8 +60,8 @@ public:
 
 int main() {
 
-    StudentResult s1(101, "Avinash", 80, 75, 90);
-    StudentResult s2(102, "Rahul", 35, 70, 65);
+    StudentResult s1(101, "Avinash", 810, 75, 90);
+    StudentResult s2(102, "Ash", 35, 780, 65);
 
     StudentResult::showTotalStudents();
 
