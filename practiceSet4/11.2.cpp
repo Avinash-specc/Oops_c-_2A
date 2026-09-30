@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class ServiceRecord {
+private:
+    string serviceName;
+    float serviceCost;
+
+public:
+    void read() {
+        cout << "Enter Service Name: ";
+        cin >> serviceName;
+
+        cout << "Enter Service Cost: ";
+        cin >> serviceCost;
+    }
+
+    void display() {
+        cout << "Service: " << serviceName
+        << "Cost: " << serviceCost << endl;
+    }
+
+    float getCost() {
+        return serviceCost;
+    }
+};
+
+class Vehicle {
+private:
+    string vehicleNumber;
+    string ownerName;
+    int serviceCount;
+    ServiceRecord* services;
+
+public:
+    Vehicle(string number, string owner, int count) {
+        vehicleNumber = number;
+        ownerName = owner;
+        serviceCount = count;
+
+        services = new ServiceRecord[serviceCount];
+    }
+
+    void readServices() {
+        for (int i = 0; i < serviceCount; i++) {
+            cout << "\nEnter details of Service " << i + 1 << ":\n";
+            services[i].read();
+        }
+    }
+
+    void display() {
+        cout << "\n Vehicle Details \n";
+        cout << "Vehicle Number: " << vehicleNumber << endl;
+        cout << "Owner Name: " << ownerName << endl;
+
+        cout << "\n Service Records \n";
+
+        float totalBill = 0;
+
+        for (int i = 0; i < serviceCount; i++) {
+            services[i].display();
+            totalBill += services[i].getCost();
+        }
+
+        cout << "\nTotal Service Bill: " << totalBill << endl;
+    }
+
+    ~Vehicle() {
+        delete[] services;
+        cout << "\nService records memory released.\n";
+    }
+};
+
+int main() {
+    string vehicleNumber;
+    string ownerName;
+    int serviceCount;
+
+    cout << "Enter Vehicle Number: ";
+    cin >> vehicleNumber;
+
+    cout << "Enter Owner Name: ";
+    cin >> ownerName;
+
+    cout << "Enter Number of Services: ";
+    cin >> serviceCount;
+
+    Vehicle* vehicle = new Vehicle(
+        vehicleNumber,
+        ownerName,
+        serviceCount
+    );
+
+    vehicle->readServices();
+
+    vehicle->display();
+    delete vehicle;
+
+    return 0;
+}
